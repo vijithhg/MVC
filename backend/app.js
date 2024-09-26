@@ -1,13 +1,14 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const employeeRoutes = require('./routes/employeeRoutes')
+const bodyParser = require('body-parser')
+const userRoutes = require('./routes/userRoutes')
 
 const app = express()
 app.use(cors())
+app.use(bodyParser.json())
 
-
-app.use('/employee',employeeRoutes)
+app.use('/api',userRoutes)
 
 
 //mongoDB connection
