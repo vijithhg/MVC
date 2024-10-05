@@ -1,25 +1,20 @@
 
-import { useState,useEffect } from 'react';
-import UsersList from './components/UserList'
-import UserRegistration from './components/UserRegistration'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios';
+import { Route, BrowserRouter as Router, Routes,  } from 'react-router-dom';
+import LoginPage from './components/Auth/Login';
+import RegisterPage from './components/Auth/Register';
 function App() {
-  const[users,setUsers]=useState([])
-  useEffect(()=>{
-    axios.get('http://localhost:8000/api/users').then((res)=>setUsers(res?.data?.data))
-},[])
+
+
   return (
-    <div className='container'>
-      <div className='row'>
-        <div className='col-6'>
-          <UsersList users={users} setUsers={setUsers} />
-        </div>
-        <div className='col-6'>
-          <UserRegistration />
-        </div>
-      </div>
-    </div>
+    <Router>
+
+      <Routes>
+        <Route path='/login' element={<LoginPage/>}></Route>
+        <Route path='/register' element={<RegisterPage/>}></Route>
+      </Routes>
+
+    </Router>
 
   )
 }
