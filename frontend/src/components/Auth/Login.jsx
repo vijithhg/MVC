@@ -1,7 +1,11 @@
 import { useState } from "react"
 import { login } from "../../services/authService"
+import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom"
 
 const LoginPage = ()=>{
+
+    const navigate = useNavigate()
 
     const [userAuth,setUserAuth] = useState({
         email:'',
@@ -12,7 +16,8 @@ const LoginPage = ()=>{
         e.preventDefault()
         try{
             const response = await login(userAuth)
-            console.log(response)
+            toast.success(response.message)
+            navigate('/dashboard')
         }catch(error){
             console.error(error)
         }
