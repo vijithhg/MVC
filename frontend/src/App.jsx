@@ -1,4 +1,5 @@
 import UserForm from './components/userForm';
+import UsersList from './components/usersList';
 function App() {
 
 
@@ -6,6 +7,7 @@ function App() {
   
     <>
     <UserForm/>
+    <UsersList/>
     </>
 
   )
